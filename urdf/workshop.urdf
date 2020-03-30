@@ -1,0 +1,213 @@
+<robot
+  name="maniassem">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.00033136 0.0019922 0.065103"
+        rpy="0 0 0" />
+      <mass
+        value="0.093814" />
+      <inertia
+        ixx="0.00025876"
+        ixy="-2.1212E-08"
+        ixz="1.1115E-06"
+        iyy="0.00025453"
+        iyz="-6.0546E-06"
+        izz="0.00011387" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maniassem/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maniassem/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- Used for fixing robot to Gazebo 'base_link' -->
+  <link name="world"/>
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+  <link
+    name="link1">
+    <inertial>
+      <origin
+        xyz="-0.0098022 6.2783E-05 0.013103"
+        rpy="0 0 0" />
+      <mass
+        value="0.028751" />
+      <inertia
+        ixx="1.0669E-05"
+        ixy="2.9422E-08"
+        ixz="4.0347E-06"
+        iyy="1.3028E-05"
+        iyz="-2.7995E-08"
+        izz="1.3428E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maniassem/meshes/link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.51765 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maniassem/meshes/link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint1"
+    type="continuous">
+    <origin
+      xyz="-0.0006 -0.0031 0.1289"
+      rpy="3.1289 1.5708 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link1" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="link2">
+    <inertial>
+      <origin
+        xyz="0.00089053 0.075544 -4.2678E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.021497" />
+      <inertia
+        ixx="4.6516E-05"
+        ixy="6.7362E-07"
+        ixz="-9.5036E-10"
+        iyy="1.5344E-06"
+        iyz="3.6151E-08"
+        izz="4.6001E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maniassem/meshes/link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maniassem/meshes/link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint2"
+    type="continuous">
+    <origin
+      xyz="-0.030818 0.00019839 0.00105"
+      rpy="1.5707 -1.5708 1.2475" />
+    <parent
+      link="link1" />
+    <child
+      link="link2" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="link3">
+    <inertial>
+      <origin
+        xyz="0.0016097 -7.4108E-05 0.031051"
+        rpy="0 0 0" />
+      <mass
+        value="0.0051615" />
+      <inertia
+        ixx="4.6871E-06"
+        ixy="-3.7657E-11"
+        ixz="1.5778E-08"
+        iyy="4.5526E-06"
+        iyz="1.0519E-08"
+        izz="1.4534E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maniassem/meshes/link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://maniassem/meshes/link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint3"
+    type="continuous">
+    <origin
+      xyz="0.02195 0.1197 -0.0001"
+      rpy="0.0000 1.4988E-15 -3.1416" />
+    <parent
+      link="link2" />
+    <child
+      link="link3" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
+</robot>
